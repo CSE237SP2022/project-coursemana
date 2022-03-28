@@ -1,21 +1,49 @@
 package CourseMana;
 
 public class Teacher {
+	
+	private String name;
+	private String id;
+	private String department;
+	private String title;
 
-	public Teacher(String string, String string2, String string3, String string4) {
-		// TODO Auto-generated constructor stub
+	public Teacher(String name, String id, String department, String title) {
+		this.name = name;
+		this.id = id;
+		this.department = department;
+		this.title = title;
 	}
 
 	public String getName() {
-		// TODO Auto-generated method stub
-		return null;
+		return name;
 	}
 
-	public void setName(String string) {
-		// TODO Auto-generated method stub
-		
+	public String getId() {
+		return id;
 	}
 	
-	//message from mac
+	public String getDept() {
+		return department;
+	}
+	
+	public String getTitle() {
+		return title;
+	}
+	
+	public void setName(String newName) {
+		name = newName;
+	}
+	
+	public void setId(String newId) {
+		id = newId;
+	}
+	
+	public void setDept(String newDept) {
+		department = newDept;
+	}
+	
+	public void setTitle(String newTitle) {
+		title = newTitle;
+	}
 
 }
