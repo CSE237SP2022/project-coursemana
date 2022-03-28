@@ -110,5 +110,6 @@ public class Course {
 	// Issues: using arrayList as container for students?
 	// What if we want to set the size of the class after some students have been added?
 	// camel capitalization vs underscore
+	// hellow from me
 	
 }
