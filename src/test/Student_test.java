@@ -10,7 +10,7 @@ class Student_test {
 
 
 	@Test
-	void test_Constructor() {
+	void testConstructor() {
 		Student demoStudent = new Student("Jack", "427689", 2025);
 	}
 	
