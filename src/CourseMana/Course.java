@@ -1,12 +1,91 @@
 package CourseMana;
 
+import java.util.ArrayList;
+
 public class Course {
-<<<<<<< HEAD
+	private Teacher teacher;
+	private String name;
+	private int size;
+	private ArrayList<Student> studentArray;
 	
-=======
-	//edit on course branch
 	public Course() {
 		
 	}
->>>>>>> e4b4a43cb8a6299f57624eb358ac46b14e4f42dd
+	
+	public Course(Teacher teacher, String name, int size) {
+		this.teacher = teacher;
+		this.name = name;
+		this.size = size;
+		this.studentArray = new ArrayList<Student>();
+	}
+	
+	public String getName() {
+		return this.name;
+	}
+	
+	public boolean setName(String newName) {
+		if (newName == null || newName.equals("")) {
+			return false;
+		}
+		else {
+			this.name = newName; 
+			return true;
+		}
+	}
+	
+	public int getSize() {
+		return this.size;
+	}
+	
+	public boolean setSize(int newSize) {
+		if (newSize < 0) {
+			return false;
+		}
+		else {
+			this.size = newSize;
+			return true;
+		}
+	}
+	
+	public Teacher getTeacher() {
+		return this.teacher;
+	}
+	
+	public boolean setTeacher(Teacher newTeacher) {
+		if (newTeacher == null) {
+			return false;
+		}
+		else {
+			this.teacher = newTeacher;
+			return true;
+		}
+	}
+	
+	public boolean isFull() {
+		return this.studentArray.size() > this.size;
+	}
+	
+	public boolean addStudent(Student newStudent) {
+		if (isFull()) {
+			return false;
+		}
+		else {
+			if (newStudent == null) {
+				return false;
+			}
+			else {
+				this.studentArray.add(newStudent);
+			}
+		}
+	}
+	
+	public ArrayList<Student> getStudents() {
+		return this.studentArray;
+	}
+	
+	// Issues: using arrayList as container for students?
+	// What if we want to set the size of the class after some students have been added?
+	// camel capitalization vs underscore
+	
+	
 }
