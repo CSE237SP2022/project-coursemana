@@ -12,12 +12,12 @@ import CourseMana.Teacher;
 public class Teacher_test {
 
 	@Test
-	void testConstructor() {
+	public void testConstructor() {
 		Teacher demoTeacher = new Teacher("Shook", "4872631", "CSE", "Professor");
 	}
 	
 	@Test
-	void testSetGetName() {
+	public void testSetGetName() throws Exception {
 		Teacher demoTeacher = new Teacher("Shook", "4872631", "CSE", "Professor");
 		assertEquals("Shook", demoTeacher.getName());
 		demoTeacher.setName("Randbo");
@@ -26,7 +26,7 @@ public class Teacher_test {
 	}
 	
 	@Test
-	void testSetGetId() {
+	public void testSetGetId() {
 		Teacher demoTeacher = new Teacher("Shook", "4872631", "CSE", "Professor");
 		assertEquals("4872631", demoTeacher.getId());
 		demoTeacher.setId("87654321");
@@ -35,7 +35,7 @@ public class Teacher_test {
 	}
 	
 	@Test
-	void testSetGetDepartment() {
+	public void testSetGetDepartment() {
 		Teacher demoTeacher = new Teacher("Shook", "4872631", "CSE", "Professor");
 		assertEquals("CSE", demoTeacher.getDept());
 		demoTeacher.setDept("FILM");
@@ -43,7 +43,7 @@ public class Teacher_test {
 	}
 	
 	@Test
-	void testSetGettitle() {
+	public void testSetGettitle() {
 		Teacher demoTeacher = new Teacher("Shook", "4872631", "CSE", "Professor");
 		assertEquals("Professor", demoTeacher.getTitle());
 		demoTeacher.setTitle("Prof");
