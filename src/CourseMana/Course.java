@@ -37,8 +37,14 @@ public class Course {
 		return this.size;
 	}
 	
+	
+	
 	public boolean setSize(int newSize) {
 		if (newSize < 0) {
+			return false;
+		}
+		else if (newSize < this.studentArray.size()) {
+			System.out.println("The target size is less than the number of enrolled students!");
 			return false;
 		}
 		else {
@@ -50,6 +56,7 @@ public class Course {
 	public Teacher getTeacher() {
 		return this.teacher;
 	}
+	
 	
 	public boolean setTeacher(Teacher newTeacher) {
 		if (newTeacher == null) {
@@ -65,6 +72,10 @@ public class Course {
 		return this.studentArray.size() > this.size;
 	}
 	
+	public int getEnrollment() {
+		return this.studentArray().size();
+	}
+	
 	public boolean addStudent(Student newStudent) {
 		if (isFull()) {
 			return false;
@@ -75,8 +86,19 @@ public class Course {
 			}
 			else {
 				this.studentArray.add(newStudent);
+				return true;
 			}
 		}
+	}
+	
+	public Student deleteStudent(String studentID) {
+		for (Student s : this.studentArray) {
+			if (s.getId().equals(studentID)) {
+				this.studentArray.remove(s);
+				return s;
+			}
+		}
+		return null;
 	}
 	
 	public ArrayList<Student> getStudents() {
