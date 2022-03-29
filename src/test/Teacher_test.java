@@ -1,15 +1,15 @@
 package test;
 
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.*;
 
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
-import org.junit.Before;
-import org.junit.Test;
-
+import CourseMana.Course;
 import CourseMana.Student;
 import CourseMana.Teacher;
 
-public class Teacher_test {
+class Teacher_test {
 
 	@Test
 	void testConstructor() {
@@ -17,7 +17,7 @@ public class Teacher_test {
 	}
 	
 	@Test
-	void testSetGetName() {
+	void testSetGetName() throws Exception {
 		Teacher demoTeacher = new Teacher("Shook", "4872631", "CSE", "Professor");
 		assertEquals("Shook", demoTeacher.getName());
 		demoTeacher.setName("Randbo");
