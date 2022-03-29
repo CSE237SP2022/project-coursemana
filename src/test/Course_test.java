@@ -1,16 +1,17 @@
 package test;
 
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.*;
 
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
 import CourseMana.Course;
 import CourseMana.Student;
 import CourseMana.Teacher;
 
 public class Course_test {
 
-	@Before
+	@BeforeEach
 	public void setUp() throws Exception {
 	}
 
