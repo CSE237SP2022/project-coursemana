@@ -65,6 +65,7 @@ public class Course_test {
 	@Test
 	public void testAddStudent() {
 		Course demoCourseObj = new Course();
+		demoCourseObj.setSize(10);
 		Student demoStudent = new Student("Jack", "2133134", 2023);
 		Student demoStudent2 = new Student("Life", "921345", 2020);
 		
