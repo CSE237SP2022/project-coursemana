@@ -1,38 +1,41 @@
 package CourseMana;
 
+import java.security.KeyStore.PrivateKeyEntry;
+
 public class Student {
 	
-	public Student(String name, String student_id, int year) {
-		
+	private String name;
+	private String studentId;
+	private int year;
+	
+	public Student(String name, String studentId, int year) {
+		this.name = name;
+		this.studentId = studentId;
+		this.year = year;
 	}
 
 	public String getName() {
-		// TODO Auto-generated method stub
-		return null;
+		return this.name;
 	}
 
-	public void setName(String string) {
-		// TODO Auto-generated method stub
-		
+	public void setName(String newName) {
+		this.name = newName;
 	}
 
 	public String getId() {
-		// TODO Auto-generated method stub
-		return null;
+		return this.studentId;
 	}
 
-	public void setId(String string) {
-		// TODO Auto-generated method stub
-		
+	public void setId(String newId) {
+		this.studentId = newId;
 	}
 
 	public int getYear() {
-		// TODO Auto-generated method stub
-		return 0;
+		return this.year;
 	}
 
-	public void setYear(int i) {
-		// TODO Auto-generated method stub
+	public void setYear(int newYear) {
+		this.year = newYear;
 		
 	}
 }

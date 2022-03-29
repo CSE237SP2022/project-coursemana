@@ -11,7 +11,10 @@ public class Course {
 	private ArrayList<Student> studentArray;
 	
 	public Course() {
-		
+		this.teacher = null;
+		this.name = null;
+		this.size = 0;
+		this.studentArray = new ArrayList<Student>();
 	}
 	
 	public Course(String name, int size, Teacher teacher) {
@@ -71,7 +74,7 @@ public class Course {
 	}
 	
 	public boolean isFull() {
-		return this.studentArray.size() > this.size;
+		return this.studentArray.size() >= this.size;
 	}
 	
 	public int getEnrollment() {
