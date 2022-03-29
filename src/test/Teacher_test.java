@@ -1,23 +1,23 @@
 package test;
 
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.*;
 
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
-import org.junit.Before;
-import org.junit.Test;
-
+import CourseMana.Course;
 import CourseMana.Student;
 import CourseMana.Teacher;
 
-public class Teacher_test {
+class Teacher_test {
 
 	@Test
-	public void testConstructor() {
+	void testConstructor() {
 		Teacher demoTeacher = new Teacher("Shook", "4872631", "CSE", "Professor");
 	}
 	
 	@Test
-	public void testSetGetName() throws Exception {
+	void testSetGetName() throws Exception {
 		Teacher demoTeacher = new Teacher("Shook", "4872631", "CSE", "Professor");
 		assertEquals("Shook", demoTeacher.getName());
 		demoTeacher.setName("Randbo");
@@ -26,7 +26,7 @@ public class Teacher_test {
 	}
 	
 	@Test
-	public void testSetGetId() {
+	void testSetGetId() {
 		Teacher demoTeacher = new Teacher("Shook", "4872631", "CSE", "Professor");
 		assertEquals("4872631", demoTeacher.getId());
 		demoTeacher.setId("87654321");
@@ -35,7 +35,7 @@ public class Teacher_test {
 	}
 	
 	@Test
-	public void testSetGetDepartment() {
+	void testSetGetDepartment() {
 		Teacher demoTeacher = new Teacher("Shook", "4872631", "CSE", "Professor");
 		assertEquals("CSE", demoTeacher.getDept());
 		demoTeacher.setDept("FILM");
@@ -43,7 +43,7 @@ public class Teacher_test {
 	}
 	
 	@Test
-	public void testSetGettitle() {
+	void testSetGettitle() {
 		Teacher demoTeacher = new Teacher("Shook", "4872631", "CSE", "Professor");
 		assertEquals("Professor", demoTeacher.getTitle());
 		demoTeacher.setTitle("Prof");
