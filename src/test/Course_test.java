@@ -40,7 +40,7 @@ public class Course_test {
 	}
 	
 	@Test
-	public void testSetGetGize() {
+	public void testSetGetSize() {
 		Course demoCourseObj = new Course();
 		demoCourseObj.setSize(20);
 		assertEquals(20, demoCourseObj.getSize());

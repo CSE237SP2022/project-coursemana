@@ -6,16 +6,16 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 import CourseMana.Student;
 
-class Student_test {
+public class Student_test {
 
 
 	@Test
-	void testConstructor() {
+	public void testConstructor() {
 		Student demoStudent = new Student("Jack", "427689", 2025);
 	}
 	
 	@Test
-	void testSetGetName() {
+	public void testSetGetName() {
 		Student demoStudent = new Student("Jack", "427689", 2025);
 		assertEquals("Jack", demoStudent.getName());
 		demoStudent.setName("Randbo");
@@ -24,7 +24,7 @@ class Student_test {
 	}
 	
 	@Test
-	void testSetGetId() {
+	public void testSetGetId() {
 		Student demoStudent = new Student("Jack", "427689", 2025);
 		assertEquals("427689", demoStudent.getId());
 		demoStudent.setId("12345678");
@@ -33,7 +33,7 @@ class Student_test {
 	}
 	
 	@Test
-	void testSetGetYear() {
+	public void testSetGetYear() {
 		Student demoStudent = new Student("Jack", "427689", 2025);
 		assertEquals(2025, demoStudent.getYear());
 		demoStudent.setYear(2024);
