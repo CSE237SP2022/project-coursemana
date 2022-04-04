@@ -1,18 +1,28 @@
 package CourseMana;
 
+import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 import java.util.Scanner;
 
 public class Interface {
 	
 	private List<String> listOfCommands;
+	private Map<String, Course> idToCourse;
+	private Map<String, Student> idToStudent;
+	private Map<String, Teacher> idToTeacher;
 	
 	public Interface() {
 		this.listOfCommands = new LinkedList<String>();
 		this.listOfCommands.add("add student");
 		this.listOfCommands.add("add teacher");
 		this.listOfCommands.add("add student");
+		
+		this.idToCourse = new HashMap<String, Course>();
+		this.idToStudent = new HashMap<String, Student>();
+		this.idToTeacher = new HashMap<String, Teacher>();
+
 	}
 	
 	
@@ -36,7 +46,7 @@ public class Interface {
 			break;
 		default:
 			printUsageMessage();
-			break;S
+			break;
 		}
 	}
 	
