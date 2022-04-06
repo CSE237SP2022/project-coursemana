@@ -56,10 +56,23 @@ public class Interface {
 	
 	// list all courses in the system
 	private void listCourse() {
+
 		System.out.println("Hello From listCourse()");
+		
+		for(Course c : idToCourse.values()) {
+			
+			String name = c.getName();
+			int size = c.getSize();
+			String teacherName = "c.getTeacher().getName()";
+			
+			String message = "Name: " + name + " Size: " + size + " Teacher: " + teacherName;
+			
+			System.out.println(message);
+			
+		}
 	}
 		
-	
+	// handle different command
 	public void executeCommand(String input) {
 		switch(input) {
 		case "add student":
