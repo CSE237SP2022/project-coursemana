@@ -63,7 +63,7 @@ public class Interface {
 			
 			String name = c.getName();
 			int size = c.getSize();
-			String teacherName = "c.getTeacher().getName()";
+			String teacherName = c.getTeacher().getName();
 			
 			String message = "Name: " + name + " Size: " + size + " Teacher: " + teacherName;
 			
