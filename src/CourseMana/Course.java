@@ -1,19 +1,20 @@
 package CourseMana;
 import CourseMana.*;
-
 import java.util.ArrayList;
 
 public class Course {
-
+	
 	private Teacher teacher;
 	private String name;
 	private int size;
+	private String id;
 	private ArrayList<Student> studentArray;
 	
 	public Course() {
 		this.teacher = null;
 		this.name = null;
 		this.size = 0;
+		this.id = null;
 		this.studentArray = new ArrayList<Student>();
 	}
 	
@@ -22,6 +23,18 @@ public class Course {
 		this.name = name;
 		this.size = size;
 		this.studentArray = new ArrayList<Student>();
+	}
+	
+	public Course(String name, String id, int size, Teacher teacher) {
+		this.teacher = teacher;
+		this.name = name;
+		this.size = size;
+		this.id = id;
+		this.studentArray = new ArrayList<Student>();
+	}
+	
+	public String getID() {
+		return this.id;
 	}
 	
 	public String getName() {

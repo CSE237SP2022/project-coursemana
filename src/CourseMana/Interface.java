@@ -1,6 +1,5 @@
 package CourseMana;
 
-
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
@@ -43,14 +42,18 @@ public class Interface {
 	// add new course to the system
 	private void addCourse() {
 		System.out.println("Hello From addCourse()");
+		String courseID = askStringInput("Please Enter A Course ID: ");
+		while(idToCourse.containsKey(courseID)) {
+			courseID = askStringInput("ID <" + courseID+ "> is in used, please enter a new ID:");
+		}
 		String courseName = askStringInput("Please Enter A Course Name: ");
 		int courseSize = askPosIntInput("Please Enter The Size of the Course: ");
 		String teacherId = askStringInput("Please Enter Teacher ID: ");
 		
-		Course newCourse = new Course(courseName, courseSize, idToTeacher.get(teacherId));
+		Course newCourse = new Course(courseName, courseID, courseSize, idToTeacher.get(teacherId));
 		idToCourse.put(courseName, newCourse);
 		
-		System.out.println(courseName + " of size " + courseSize + " is added. ");
+		System.out.println("ID: "+ courseID + "Name: " + courseName + " of size " + courseSize + " is added. ");
 		
 	}
 	
@@ -64,8 +67,9 @@ public class Interface {
 			String name = c.getName();
 			int size = c.getSize();
 			String teacherName = "c.getTeacher().getName()";
+			String courseID = c.getID();
 			
-			String message = "Name: " + name + " Size: " + size + " Teacher: " + teacherName;
+			String message = "ID: "+ courseID + " Name: " + name + " Size: " + size + " Teacher: " + teacherName;
 			
 			System.out.println(message);
 			
