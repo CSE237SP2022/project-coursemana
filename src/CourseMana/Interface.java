@@ -56,7 +56,23 @@ public class Interface {
 		System.out.println("ID: "+ courseID + "Name: " + courseName + " of size " + courseSize + " is added. ");
 		
 	}
-	
+
+    // add new student to the system
+    private void addStudent() {
+        System.out.println("Hello From addStudent()");
+        String studentID = askStringInput("Please Enter A Student ID: ");
+        while (idToStudent.containsKey(studentID)) {
+            studentID = askStringInput("ID <" + studentID + "> is in used, please enter a new ID:");
+        }
+        String studentName = askStringInput("Please Enter A Student Name: ");
+        int year = askPosIntInput("Please Enter The Year of the Student: ");
+
+        Student newStudent = new Student(studentName, studentID, year);
+        idToStudent.put(studentID, newStudent);
+
+        System.out.println("ID: " + studentID + " Name: " + studentName + " of year " + year + " is added. ");
+    }
+    
 	// list all courses in the system
 	private void listCourse() {
 
@@ -81,7 +97,7 @@ public class Interface {
 		switch(input) {
 		case "add student":
 			System.out.println("Calling addStudent()...");
-			//addStudent();
+			addStudent();
 			break;
 		case "add teacher":
 			System.out.println("Calling addTeacher()...");
