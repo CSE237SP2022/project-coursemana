@@ -35,7 +35,7 @@ public class Interface {
 	
 	
 	public void printUsageMessage() {
-		System.out.println("Cannot recognize user input.This program accepts the following commands: ");
+		System.out.println("Cannot recognize user input. This program accepts the following commands: ");
 		for (String command : listOfCommands) {
 			System.out.println("<" + command + ">");
 		}

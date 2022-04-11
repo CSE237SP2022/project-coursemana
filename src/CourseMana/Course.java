@@ -1,5 +1,6 @@
 package CourseMana;
-import CourseMana.*;
+import CourseMana.Student;
+import CourseMana.Course;
 import java.util.ArrayList;
 
 public class Course {
