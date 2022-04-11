@@ -73,6 +73,23 @@ public class Interface {
         System.out.println("ID: " + studentID + " Name: " + studentName + " of year " + year + " is added. ");
     }
     
+    //adds a new teacher into the system
+    private void addTeacher() {
+        System.out.println("Hello From addTeacher()");
+        String teacherID = askStringInput("Please Enter A Teacher ID: ");
+        while (idToTeacher.containsKey(teacherID)) {
+        	teacherID = askStringInput("ID <" + teacherID + "> is in used, please enter a new ID:");
+        }
+        String teacherName = askStringInput("Please Enter A Teacher Name: ");
+        String teacherDepartment = askStringInput("Please Enter The Department of The Teacher: ");
+        String teacherTitle = askStringInput("Please Enter The Title of The Teacher: ");
+
+        Teacher newTeacher = new Teacher(teacherName, teacherID, teacherDepartment, teacherTitle);
+        idToTeacher.put(teacherID, newTeacher);
+
+        System.out.println("ID: " + teacherID + " Name: " + teacherName + " of department " + teacherDepartment + "with the title " + teacherTitle + "is added. ");
+    }
+    
 	// list all courses in the system
 	private void listCourse() {
 
@@ -91,7 +108,8 @@ public class Interface {
 			
 		}
 	}
-		
+	
+	
 	// handle different command
 	public void executeCommand(String input) {
 		switch(input) {
