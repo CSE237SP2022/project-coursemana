@@ -26,6 +26,7 @@ public class Interface {
 		this.listOfCommands.add("list course");
 		this.listOfCommands.add("list teacher");
 		this.listOfCommands.add("list student");
+		this.listOfCommands.add("quit");
 		
 		this.idToCourse = new HashMap<String, Course>();
 		this.idToStudent = new HashMap<String, Student>();
@@ -174,6 +175,9 @@ public class Interface {
 			System.out.println("Calling listCourse()...");
 			listStudent();
 			break;
+		case "quit":
+			System.out.println("Quiting CourseMana...");
+			System.exit(0);
 		default:
 			printUsageMessage();
 			break;
@@ -183,6 +187,11 @@ public class Interface {
 	public void run() {
 		Scanner scanner = new Scanner(System.in); 
 		System.out.println("\nEnter Command:");
+		System.out.print("List of commands: ");
+		for (String command : listOfCommands) {
+			System.out.print("<" + command + "> ");
+		}
+		System.out.println();
 		String input = scanner.nextLine();
 		
 		executeCommand(input);
