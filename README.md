@@ -2,7 +2,7 @@
 
 
 
-***
+
 ## User stories
 
 In this iteration, user can run the user interface with "startScript.sh". The interface supports the following commands:
@@ -19,7 +19,7 @@ In this iteration, user can run the user interface with "startScript.sh". The in
 
 Users can call these commands simply by typing the commad to the interface and follow the instructions for further user inputs. When invlaid commands are given, the interface will print out a usage message containning all available commands.
 
-***
+
 ## User stories for the next iteration:
 
 In the next iteration, the following command will be added to the interface:
@@ -33,14 +33,14 @@ In the next iteration, the following command will be added to the interface:
 - add student to course: add a student in the system to a course; course size would be considered  in the process.
 - list student in course: list all student in a course with their current grades
 
-***
+
 ## Implemented but doesn't currently work:
 
 ***Data Type Error Catch***
 
 The commands rely on input from the user, so errors may be caused when users give input in invalid data type (givng String to an integer scanner, etc.). We will fix this in the next iteration by implementing exception handler.
 
-***
+
 ## How to Run Our Code:
 1. Clone and cd into the repository on your command line.
 2. start the program with "./startScript.sh".
