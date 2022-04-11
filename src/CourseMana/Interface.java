@@ -73,6 +73,7 @@ public class Interface {
         System.out.println("ID: " + studentID + " Name: " + studentName + " of year " + year + " is added. ");
     }
     
+    //adds a new teacher into the system
     private void addTeacher() {
         System.out.println("Hello From addTeacher()");
         String teacherID = askStringInput("Please Enter A Teacher ID: ");
@@ -107,7 +108,8 @@ public class Interface {
 			
 		}
 	}
-		
+	
+	
 	// handle different command
 	public void executeCommand(String input) {
 		switch(input) {
