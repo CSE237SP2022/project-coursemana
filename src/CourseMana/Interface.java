@@ -24,6 +24,8 @@ public class Interface {
 		this.listOfCommands.add("add teacher");
 		this.listOfCommands.add("add course");
 		this.listOfCommands.add("list course");
+		this.listOfCommands.add("list teacher");
+		this.listOfCommands.add("list student");
 		
 		this.idToCourse = new HashMap<String, Course>();
 		this.idToStudent = new HashMap<String, Student>();
@@ -99,7 +101,7 @@ public class Interface {
 			
 			String name = c.getName();
 			int size = c.getSize();
-			String teacherName = "c.getTeacher().getName()";
+			String teacherName = c.getTeacher().getName();
 			String courseID = c.getID();
 			
 			String message = "ID: "+ courseID + " Name: " + name + " Size: " + size + " Teacher: " + teacherName;
@@ -127,6 +129,23 @@ public class Interface {
 		}
 	}
 	
+	private void listStudent() {
+
+		System.out.println("Hello From listStudent()");
+		
+		for(Student s : idToStudent.values()) {
+			
+			String id = s.getId();
+			String name = s.getName();
+			int year = s.getYear();
+			
+			String message = "ID: "+ id + " Name: " + name + " Year: " + year;
+			
+			System.out.println(message);
+			
+		}
+	}
+	
 	
 	// handle different command
 	public void executeCommand(String input) {
@@ -137,7 +156,11 @@ public class Interface {
 			break;
 		case "add teacher":
 			System.out.println("Calling addTeacher()...");
-			//addTeacher();
+			addTeacher();
+			break;
+		case "list teacher":
+			System.out.println("Calling listTeacher()...");
+			listTeacher();
 			break;
 		case "add course":
 			System.out.println("Calling addCourse()...");
@@ -146,6 +169,10 @@ public class Interface {
 		case "list course":
 			System.out.println("Calling listCourse()...");
 			listCourse();
+			break;
+		case "list student":
+			System.out.println("Calling listCourse()...");
+			listStudent();
 			break;
 		default:
 			printUsageMessage();
