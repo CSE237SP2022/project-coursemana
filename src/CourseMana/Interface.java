@@ -109,6 +109,24 @@ public class Interface {
 		}
 	}
 	
+	private void listTeacher() {
+
+		System.out.println("Hello From listTeacher()");
+		
+		for(Teacher t : idToTeacher.values()) {
+			
+			String id = t.getId();
+			String name = t.getName();
+			String dept = t.getDept();
+			String title = t.getTitle();
+			
+			String message = "ID: "+ id + " Name: " + name + " Department: " + dept + " Title: " + title;
+			
+			System.out.println(message);
+			
+		}
+	}
+	
 	
 	// handle different command
 	public void executeCommand(String input) {
