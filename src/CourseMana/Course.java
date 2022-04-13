@@ -5,6 +5,8 @@ import java.util.ArrayList;
 
 public class Course {
 	
+	// A course obj has a teacher, name, class size, id, and a list of all students.
+	
 	private Teacher teacher;
 	private String name;
 	private int size;
@@ -87,6 +89,7 @@ public class Course {
 		}
 	}
 	
+	// check if the course is full by enrollment 
 	public boolean isFull() {
 		return this.studentArray.size() >= this.size;
 	}

@@ -13,11 +13,16 @@ import CourseMana.Student;
 
 public class Interface {
 	
+	// Data structure to keep track of supported commands.
 	private List<String> listOfCommands;
+	
+	// Data base to keep track of courses, students, and teacher in the system.
 	private Map<String, Course> idToCourse;
 	private Map<String, Student> idToStudent;
 	private Map<String, Teacher> idToTeacher;
 	
+	
+	// initialize the command list and database
 	public Interface() {
 		this.listOfCommands = new LinkedList<String>();
 		this.listOfCommands.add("add student");
@@ -34,7 +39,7 @@ public class Interface {
 
 	}
 	
-	
+	// called when invalid 
 	public void printUsageMessage() {
 		System.out.println("Cannot recognize user input. This program accepts the following commands: ");
 		for (String command : listOfCommands) {
@@ -112,6 +117,7 @@ public class Interface {
 		}
 	}
 	
+	// list all teachers in the system
 	private void listTeacher() {
 
 		System.out.println("Hello From listTeacher()");
@@ -130,6 +136,7 @@ public class Interface {
 		}
 	}
 	
+	// list all students in the system
 	private void listStudent() {
 
 		System.out.println("Hello From listStudent()");
@@ -184,6 +191,7 @@ public class Interface {
 		}
 	}
 	
+	// start the interface
 	public void run() {
 		Scanner scanner = new Scanner(System.in); 
 		System.out.println("\nEnter Command:");

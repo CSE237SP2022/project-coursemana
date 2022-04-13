@@ -2,6 +2,8 @@ package CourseMana;
 
 public class Teacher {
 	
+	// a teacher obj has name, id, dept, and title;
+	
 	private String name;
 	private String id;
 	private String department;
