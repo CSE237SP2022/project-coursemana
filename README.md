@@ -41,11 +41,11 @@ In the next iteration, the following command will be added to the interface:
 
 ## Implemented but doesn't currently work:
 
-***Data Type Error Catch***
+**Data Type Error Catch**
 
 The commands rely on input from the user, so exceptions may be throws when users give input in invalid data type (givng String when the program expects an integer input for course ID, etc.). We will fix this in the next iteration by implementing exception handler.
 
-***Add Course Command Can Throw Exception**
+**Add Course Command Can Throw Exception**
 
 The addCourse() command will throw an exception if the teacher of the course that the user want to add is not currently in the database. We will fix this issue in the next iteration by disabling the user from adding a course if the teacher of that course is not already in the database. 
 
