@@ -8,6 +8,7 @@
 In this iteration, our group focused on making the previous funcionality more robust.
 
 **Input Type Error**
+
 The interface now can handle the error caused by wrong user input type.
 
 ## User stories for the next iteration:
