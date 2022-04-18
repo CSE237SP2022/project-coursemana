@@ -38,4 +38,22 @@ public class Student {
 		this.year = newYear;
 		
 	}
+	
+	public boolean equals(Object o) {
+		Student other = (Student) o;
+		if (other.getName().equals(this.getName())) {
+			if (other.getId().equals(this.getId())) {
+				if (other.getYear() == this.getYear()) {
+					return true;
+				} else {
+					return false;
+				}
+			} else {
+				return false;
+			}
+		} else {
+			return false;
+		}
+	}
+
 }

@@ -1,5 +1,6 @@
 package CourseMana;
 
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
@@ -70,16 +71,18 @@ public class Interface {
         System.out.println("Hello From addStudent()");
         String studentID = askStringInput("Please Enter A Student ID: ");
         while (idToStudent.containsKey(studentID)) {
-            studentID = askStringInput("ID <" + studentID + "> is in used, please enter a new ID:");
+            studentID = askStringInput("ID <" + studentID + "> is in use, please enter a new ID:");
         }
         String studentName = askStringInput("Please Enter A Student Name: ");
         int year = askPosIntInput("Please Enter The Year of the Student: ");
-
-        Student newStudent = new Student(studentName, studentID, year);
-        idToStudent.put(studentID, newStudent);
-
-        System.out.println("ID: " + studentID + " Name: " + studentName + " of year " + year + " is added. ");
+        addStudentHelper(studentName, studentID, year);
     }
+    
+   public void addStudentHelper(String studentName, String studentID, int year) {
+	   Student newStudent = new Student(studentName, studentID, year);
+       idToStudent.put(studentID, newStudent);
+       System.out.println("ID: " + studentID + " Name: " + studentName + " of year " + year + " is added. ");
+   }
     
     //adds a new teacher into the system
     private void addTeacher() {
@@ -134,6 +137,14 @@ public class Interface {
 			System.out.println(message);
 			
 		}
+	}
+	
+	public int getNumStudents() {
+		return this.idToStudent.size();
+	}
+	
+	public Map<String, Student> getAllStudents() {
+		return this.idToStudent;
 	}
 	
 	// list all students in the system
