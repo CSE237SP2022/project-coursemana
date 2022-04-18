@@ -64,7 +64,7 @@ public class Interface {
 		System.out.println("ID: "+ courseID + "Name: " + courseName + " of size " + courseSize + " is added. ");
 		
 	}
-
+	
     // add new student to the system
     private void addStudent() {
         System.out.println("Hello From addStudent()");
@@ -201,9 +201,8 @@ public class Interface {
 		}
 		System.out.println();
 		String input = scanner.nextLine();
-		
+		scanner.close();
 		executeCommand(input);
-		
 	}
 	
 	
@@ -211,11 +210,18 @@ public class Interface {
 	private int askPosIntInput(String prompt) {
 		Scanner scanner = new Scanner(System.in); 
 		System.out.println(prompt);
+		while (!scanner.hasNextInt()) {
+			System.out.println("Please enter an integer.");
+		}
 		int input = scanner.nextInt();
-		while(input<0) {
+		while(input<=0) {
 			System.out.println("Please enter a positive integer.");
+			while (!scanner.hasNextInt()) {
+				System.out.println("Please enter an integer.");
+			}
 			input = scanner.nextInt();
 		}
+		scanner.close();
 		return input;
 	}
 	
@@ -224,6 +230,7 @@ public class Interface {
 		Scanner scanner = new Scanner(System.in); 
 		System.out.println(prompt);
 		String input = scanner.nextLine();
+		scanner.close();
 		return input;
 	}
 	
