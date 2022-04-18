@@ -50,17 +50,17 @@ public class Interface {
 	private void addStudentToCourse() {
 		System.out.println("Hello From addStudentToCourse()");
 		String courseID = askStringInput("Please Enter A Course ID: ");
-		while(!idToCourse.containsKey(courseID)) {
-			courseID = askStringInput("ID <" + courseID+ "> is not in the database, please enter a new ID:");
-		}
 		String studentID = askStringInput("Please Enter A Student ID: ");
-        while (!idToStudent.containsKey(studentID)) {
-            studentID = askStringInput("ID <" + studentID + "> is not in the database, please enter a new ID:");
-        }
         addStudentToCourseHelper(courseID, studentID);
 	}
 	
 	public void addStudentToCourseHelper(String courseID, String studentID) {
+		if (!idToCourse.containsKey(courseID)) {
+			System.out.println("Student NOT added. Invalid course ID.");
+		}
+		if (!idToStudent.containsKey(studentID)) {
+			System.out.println("Student NOT added. Invalid student ID.");
+        }
 		Course c = this.idToCourse.get(courseID);
 		Student s = this.idToStudent.get(studentID);
 		if (c.addStudent(s)) {
