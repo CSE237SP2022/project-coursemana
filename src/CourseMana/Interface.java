@@ -99,7 +99,7 @@ public class Interface {
     }
     
    public void addStudentHelper(String studentName, String studentID, int year) {
-	   if (!idToStudent.containsKey(studentID)) {
+	   if (idToStudent.containsKey(studentID)) {
            System.out.println("Student NOT added. ID <" + studentID + "> is in use.");
        }
 	   Student newStudent = new Student(studentName, studentID, year);
