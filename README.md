@@ -5,20 +5,10 @@
 
 ## User stories
 
-In this iteration, user can run the user interface with "startScript.sh". The interface supports the following commands:
+In this iteration, our group focused on making the previous funcionality more robust.
 
-***add commands:***
-- add course: add a course to the system
-- add teacher: add a teacher to the system
-- add student: add a student to the system
-
-***list commands:***
-- list course: list all courses in the system
-- list teacher: list all teachers in the system
-- list student: list all students in the system
-
-Users can call these commands simply by typing the commad to the interface and follow the instructions for further user inputs. When invalid commands are given, the interface will print out a usage message containing all available commands.
-
+**Input Type Error**
+The interface now can handle the error caused by wrong user input type.
 
 ## User stories for the next iteration:
 
