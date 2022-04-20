@@ -91,11 +91,16 @@ public class Interface {
         String teacherName = askStringInput("Please Enter A Teacher Name: ");
         String teacherDepartment = askStringInput("Please Enter The Department of The Teacher: ");
         String teacherTitle = askStringInput("Please Enter The Title of The Teacher: ");
-
-        Teacher newTeacher = new Teacher(teacherName, teacherID, teacherDepartment, teacherTitle);
+        
+        addTeacherHelper(teacherName, teacherID, teacherDepartment, teacherTitle);
+        
+    }
+    
+    // helper method that add teacher to the system
+    public void addTeacherHelper(String teacherName, String teacherID, String teacherDept, String teacherTitle) {
+    	Teacher newTeacher = new Teacher(teacherName, teacherID, teacherDept, teacherTitle);
         idToTeacher.put(teacherID, newTeacher);
-
-        System.out.println("ID: " + teacherID + " Name: " + teacherName + " of department " + teacherDepartment + "with the title " + teacherTitle + "is added. ");
+        System.out.println("ID: " + teacherID + " Name: " + teacherName + " of department " + teacherDept + "with the title " + teacherTitle + "is added. ");
     }
     
 	// list all courses in the system
