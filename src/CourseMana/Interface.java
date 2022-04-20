@@ -129,6 +129,10 @@ public class Interface {
         System.out.println("ID: " + teacherID + " Name: " + teacherName + " of department " + teacherDept + "with the title " + teacherTitle + "is added. ");
     }
     
+    public Map<String, Teacher> getAllTeachers() {
+		return this.idToTeacher;
+	}
+    
 	// list all courses in the system
 	private void listCourse() {
 
