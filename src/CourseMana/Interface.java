@@ -74,17 +74,28 @@ public class Interface {
 	// add new course to the system
 	private void addCourse() {
 		System.out.println("Hello From addCourse()");
+		
+		if(idToTeacher.size()==0) {
+			System.out.println("Cannot add course since there is no teacher in the system.");
+			return;
+		}
+		
 		String courseID = askStringInput("Please Enter A Course ID: ");
 		while(idToCourse.containsKey(courseID)) {
 			courseID = askStringInput("ID <" + courseID+ "> is in used, please enter a new ID:");
 		}
+		
 		String courseName = askStringInput("Please Enter A Course Name: ");
+		
 		int courseSize = askPosIntInput("Please Enter The Size of the Course: ");
+		
 		String teacherId = askStringInput("Please Enter Teacher ID: ");
+		while(!(idToTeacher.containsKey(teacherId))) {
+			teacherId = askStringInput("Teacher ID is not in the system, please enter a valid ID.");
+		}
 		
 		Course newCourse = new Course(courseName, courseID, courseSize, idToTeacher.get(teacherId));
 		idToCourse.put(courseName, newCourse);
-		
 		System.out.println("ID: "+ courseID + "Name: " + courseName + " of size " + courseSize + " is added. ");
 		
 	}
