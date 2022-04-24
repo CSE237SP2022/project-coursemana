@@ -1,5 +1,6 @@
 package CourseMana;
 
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
@@ -47,6 +48,29 @@ public class Interface {
 		}
 	}
 	
+	private void addStudentToCourse() {
+		System.out.println("Hello From addStudentToCourse()");
+		String courseID = askStringInput("Please Enter A Course ID: ");
+		String studentID = askStringInput("Please Enter A Student ID: ");
+        addStudentToCourseHelper(courseID, studentID);
+	}
+	
+	public void addStudentToCourseHelper(String courseID, String studentID) {
+		if (!idToCourse.containsKey(courseID)) {
+			System.out.println("Student NOT added to course. Invalid course ID.");
+		}
+		if (!idToStudent.containsKey(studentID)) {
+			System.out.println("Student NOT added to course. Invalid student ID.");
+        }
+		Course c = this.idToCourse.get(courseID);
+		Student s = this.idToStudent.get(studentID);
+		if (c.addStudent(s)) {
+			System.out.println("Student successfully added.");
+		} else {
+			System.out.println("Student NOT added.");
+		}
+	}
+	
 	// add new course to the system
 	private void addCourse() {
 		System.out.println("Hello From addCourse()");
@@ -69,17 +93,19 @@ public class Interface {
     private void addStudent() {
         System.out.println("Hello From addStudent()");
         String studentID = askStringInput("Please Enter A Student ID: ");
-        while (idToStudent.containsKey(studentID)) {
-            studentID = askStringInput("ID <" + studentID + "> is in used, please enter a new ID:");
-        }
         String studentName = askStringInput("Please Enter A Student Name: ");
         int year = askPosIntInput("Please Enter The Year of the Student: ");
-
-        Student newStudent = new Student(studentName, studentID, year);
-        idToStudent.put(studentID, newStudent);
-
-        System.out.println("ID: " + studentID + " Name: " + studentName + " of year " + year + " is added. ");
+        addStudentHelper(studentName, studentID, year);
     }
+    
+   public void addStudentHelper(String studentName, String studentID, int year) {
+	   if (idToStudent.containsKey(studentID)) {
+           System.out.println("Student NOT added. ID <" + studentID + "> is in use.");
+       }
+	   Student newStudent = new Student(studentName, studentID, year);
+       idToStudent.put(studentID, newStudent);
+       System.out.println("ID: " + studentID + " Name: " + studentName + " of year " + year + " is added. ");
+   }
     
     //adds a new teacher into the system
     private void addTeacher() {
@@ -91,12 +117,21 @@ public class Interface {
         String teacherName = askStringInput("Please Enter A Teacher Name: ");
         String teacherDepartment = askStringInput("Please Enter The Department of The Teacher: ");
         String teacherTitle = askStringInput("Please Enter The Title of The Teacher: ");
-
-        Teacher newTeacher = new Teacher(teacherName, teacherID, teacherDepartment, teacherTitle);
-        idToTeacher.put(teacherID, newTeacher);
-
-        System.out.println("ID: " + teacherID + " Name: " + teacherName + " of department " + teacherDepartment + "with the title " + teacherTitle + "is added. ");
+        
+        addTeacherHelper(teacherName, teacherID, teacherDepartment, teacherTitle);
+        
     }
+    
+    // helper method that add teacher to the system
+    public void addTeacherHelper(String teacherName, String teacherID, String teacherDept, String teacherTitle) {
+    	Teacher newTeacher = new Teacher(teacherName, teacherID, teacherDept, teacherTitle);
+        idToTeacher.put(teacherID, newTeacher);
+        System.out.println("ID: " + teacherID + " Name: " + teacherName + " of department " + teacherDept + "with the title " + teacherTitle + "is added. ");
+    }
+    
+    public Map<String, Teacher> getAllTeachers() {
+		return this.idToTeacher;
+	}
     
 	// list all courses in the system
 	private void listCourse() {
@@ -136,6 +171,14 @@ public class Interface {
 		}
 	}
 	
+	public int getNumStudents() {
+		return this.idToStudent.size();
+	}
+	
+	public Map<String, Student> getAllStudents() {
+		return this.idToStudent;
+	}
+	
 	// list all students in the system
 	private void listStudent() {
 
@@ -158,6 +201,10 @@ public class Interface {
 	// handle different command
 	public void executeCommand(String input) {
 		switch(input) {
+		case "add student to course":
+			System.out.println("Calling addStudentToCourse()...");
+			addStudentToCourse();
+			break;
 		case "add student":
 			System.out.println("Calling addStudent()...");
 			addStudent();
