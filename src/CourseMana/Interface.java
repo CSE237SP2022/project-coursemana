@@ -93,6 +93,9 @@ public class Interface {
     private void addStudent() {
         System.out.println("Hello From addStudent()");
         String studentID = askStringInput("Please Enter A Student ID: ");
+        while (idToStudent.containsKey(studentID)) {
+        	studentID = askStringInput("ID <" + studentID + "> is in used, please enter a new ID:");
+        }
         String studentName = askStringInput("Please Enter A Student Name: ");
         int year = askPosIntInput("Please Enter The Year of the Student: ");
         addStudentHelper(studentName, studentID, year);
@@ -101,6 +104,7 @@ public class Interface {
    public void addStudentHelper(String studentName, String studentID, int year) {
 	   if (idToStudent.containsKey(studentID)) {
            System.out.println("Student NOT added. ID <" + studentID + "> is in use.");
+           return;
        }
 	   Student newStudent = new Student(studentName, studentID, year);
        idToStudent.put(studentID, newStudent);
@@ -124,6 +128,10 @@ public class Interface {
     
     // helper method that add teacher to the system
     public void addTeacherHelper(String teacherName, String teacherID, String teacherDept, String teacherTitle) {
+    	if (idToTeacher.containsKey(teacherID)) {
+            System.out.println("Teacher NOT added. ID <" + teacherID + "> is in use.");
+            return;
+        }
     	Teacher newTeacher = new Teacher(teacherName, teacherID, teacherDept, teacherTitle);
         idToTeacher.put(teacherID, newTeacher);
         System.out.println("ID: " + teacherID + " Name: " + teacherName + " of department " + teacherDept + "with the title " + teacherTitle + "is added. ");
@@ -248,7 +256,6 @@ public class Interface {
 		}
 		System.out.println();
 		String input = scanner.nextLine();
-		scanner.close();
 		executeCommand(input);
 	}
 	
@@ -268,7 +275,6 @@ public class Interface {
 			}
 			input = scanner.nextInt();
 		}
-		scanner.close();
 		return input;
 	}
 	
@@ -277,7 +283,6 @@ public class Interface {
 		Scanner scanner = new Scanner(System.in); 
 		System.out.println(prompt);
 		String input = scanner.nextLine();
-		scanner.close();
 		return input;
 	}
 	
