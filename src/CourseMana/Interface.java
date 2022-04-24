@@ -148,6 +148,7 @@ public class Interface {
         System.out.println("ID: " + teacherID + " Name: " + teacherName + " of department " + teacherDept + "with the title " + teacherTitle + "is added. ");
     }
     
+    // get the map of teachers
     public Map<String, Teacher> getAllTeachers() {
 		return this.idToTeacher;
 	}
