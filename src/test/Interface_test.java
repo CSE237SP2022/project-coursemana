@@ -69,5 +69,28 @@ class Interface_test {
 		assertEquals(James.getId(), mapJames.getId());
 		assertEquals(James.getTitle(), mapJames.getTitle());
 	}
+	
+	@Test 
+	void testRepeatedID(){
+		Interface i = new Interface();
+		
+		i.addTeacherHelper("Pascal", "123", "CSE", "TA");
+		i.addTeacherHelper("James", "123", "MATH", "Prof");
+		
+		Map<String, Teacher> teachers = i.getAllTeachers();
+		
+		assertEquals("Pascal", teachers.get("123").getName()); 
+		assertEquals(1, teachers.size()); 
+		
+		i.addStudentHelper("John", "12345", 2024);
+		i.addStudentHelper("James", "12345", 2024);
+		
+		Map<String, Student> students = i.getAllStudents();
+		
+		assertEquals("John", students.get("12345").getName()); 
+		assertEquals(1, students.size()); 
+		
+		
+	}
 
 }
