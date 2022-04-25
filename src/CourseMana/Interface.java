@@ -58,21 +58,23 @@ public class Interface {
 	public void addStudentToCourseHelper(String courseID, String studentID) {
 		if (!idToCourse.containsKey(courseID)) {
 			System.out.println("Student NOT added to course. Invalid course ID.");
+			return;
 		}
 		if (!idToStudent.containsKey(studentID)) {
 			System.out.println("Student NOT added to course. Invalid student ID.");
+			return;
         }
 		Course c = this.idToCourse.get(courseID);
 		Student s = this.idToStudent.get(studentID);
 		if (c.addStudent(s)) {
 			System.out.println("Student successfully added.");
+			return;
 		} else {
 			System.out.println("Student NOT added.");
+			return;
 		}
 	}
 	
-
-
 	private void addCourse() {
 		System.out.println("Hello From addCourse()");		
 		String courseID = askStringInput("Please Enter A Course ID: ");
@@ -86,19 +88,25 @@ public class Interface {
 	public void addCourseHelper(String courseID, String courseName, String teacherId, int courseSize) {
 		if(idToCourse.containsKey(courseID)) {
 			System.out.println("Invalid course ID - already exists");
+			return;
 		}
 		if(idToTeacher.size()==0) {
 			System.out.println("Cannot add course since there is no teacher in the system.");
+			return;
 		}
 		if(!idToTeacher.containsKey(teacherId)) {
 			System.out.println("Teacher id does not exist, please input a valid teacher id");
+			return;
 		}
 		Course newCourse = new Course(courseName, courseID, courseSize, idToTeacher.get(teacherId));
-		idToCourse.put(courseName, newCourse);
-		System.out.println("ID: "+ courseID + "Name: " + courseName + " of size " + courseSize + " is added.");
+		idToCourse.put(courseID, newCourse);
+		System.out.println("ID: "+ courseID + " Name: " + courseName + " of size " + courseSize + " is added.");
 	}
 	
-
+	public Map<String, Course> getAllCourses() {
+		return this.idToCourse;
+	}
+	
     // add new student to the system
     private void addStudent() {
         System.out.println("Hello From addStudent()");
@@ -119,6 +127,14 @@ public class Interface {
        System.out.println("ID: " + studentID + " Name: " + studentName + " of year " + year + " is added. ");
    }
     
+	public int getNumStudents() {
+		return this.idToStudent.size();
+	}
+	
+	public Map<String, Student> getAllStudents() {
+		return this.idToStudent;
+	}
+    
     //adds a new teacher into the system
     private void addTeacher() {
         System.out.println("Hello From addTeacher()");
@@ -127,7 +143,6 @@ public class Interface {
         String teacherDepartment = askStringInput("Please Enter The Department of The Teacher: ");
         String teacherTitle = askStringInput("Please Enter The Title of The Teacher: ");
         addTeacherHelper(teacherName, teacherID, teacherDepartment, teacherTitle);
-        
     }
     
     // helper method that add teacher to the system
@@ -138,7 +153,7 @@ public class Interface {
         }
     	Teacher newTeacher = new Teacher(teacherName, teacherID, teacherDept, teacherTitle);
         idToTeacher.put(teacherID, newTeacher);
-        System.out.println("ID: " + teacherID + " Name: " + teacherName + " of department " + teacherDept + "with the title " + teacherTitle + "is added. ");
+        System.out.println("ID: " + teacherID + " Name: " + teacherName + " of department " + teacherDept + " with the title " + teacherTitle + " is added. ");
     }
     
     // get the map of teachers
@@ -148,65 +163,40 @@ public class Interface {
     
 	// list all courses in the system
 	private void listCourse() {
-
 		System.out.println("Hello From listCourse()");
-		
 		for(Course c : idToCourse.values()) {
-			
 			String name = c.getName();
 			int size = c.getSize();
 			String teacherName = c.getTeacher().getName();
 			String courseID = c.getID();
-			
 			String message = "ID: "+ courseID + " Name: " + name + " Size: " + size + " Teacher: " + teacherName;
-			
 			System.out.println(message);
-			
 		}
 	}
 	
 	// list all teachers in the system
 	private void listTeacher() {
-
 		System.out.println("Hello From listTeacher()");
-		
 		for(Teacher t : idToTeacher.values()) {
-			
 			String id = t.getId();
 			String name = t.getName();
 			String dept = t.getDept();
 			String title = t.getTitle();
-			
 			String message = "ID: "+ id + " Name: " + name + " Department: " + dept + " Title: " + title;
-			
 			System.out.println(message);
-			
 		}
 	}
-	
-	public int getNumStudents() {
-		return this.idToStudent.size();
-	}
-	
-	public Map<String, Student> getAllStudents() {
-		return this.idToStudent;
-	}
+
 	
 	// list all students in the system
 	private void listStudent() {
-
 		System.out.println("Hello From listStudent()");
-		
 		for(Student s : idToStudent.values()) {
-			
 			String id = s.getId();
 			String name = s.getName();
 			int year = s.getYear();
-			
 			String message = "ID: "+ id + " Name: " + name + " Year: " + year;
-			
 			System.out.println(message);
-			
 		}
 	}
 	
