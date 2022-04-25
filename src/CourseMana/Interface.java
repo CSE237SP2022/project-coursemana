@@ -26,6 +26,7 @@ public class Interface {
 	// initialize the command list and database
 	public Interface() {
 		this.listOfCommands = new LinkedList<String>();
+		this.listOfCommands.add("add student to course");
 		this.listOfCommands.add("add student");
 		this.listOfCommands.add("add teacher");
 		this.listOfCommands.add("add course");
@@ -243,7 +244,7 @@ public class Interface {
 	
 	// start the interface
 	public void run() {
-		Scanner scanner = new Scanner(System.in); 
+		Scanner scanner = new Scanner(System.in);
 		System.out.println("\nEnter Command:");
 		System.out.print("List of commands: ");
 		for (String command : listOfCommands) {
@@ -254,23 +255,30 @@ public class Interface {
 		executeCommand(input);
 	}
 	
+	private boolean convertStringToInt(String s) {
+		try {
+			if (Integer.parseInt(s) >= 0) {
+				return true;
+			} 
+			return false;
+		}
+		catch (NumberFormatException e) {
+		   return false;
+		}
+	}
+	
 	
 	//ask for positive integer input from the user
 	private int askPosIntInput(String prompt) {
 		Scanner scanner = new Scanner(System.in); 
 		System.out.println(prompt);
-		while (!scanner.hasNextInt()) {
-			System.out.println("Please enter an integer.");
+		String input = scanner.nextLine();
+		while (!convertStringToInt(input)) {
+			System.out.println("Please enter a positive integer:");
+			Scanner newScanner = new Scanner(System.in); 
+			input = scanner.nextLine();
 		}
-		int input = scanner.nextInt();
-		while(input<=0) {
-			System.out.println("Please enter a positive integer.");
-			while (!scanner.hasNextInt()) {
-				System.out.println("Please enter an integer.");
-			}
-			input = scanner.nextInt();
-		}
-		return input;
+		return Integer.parseInt(input);
 	}
 	
 	// ask for string input from the user

@@ -2,6 +2,7 @@ package test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Map;
 
@@ -151,6 +152,57 @@ class Interface_test {
 		
 		assertEquals(1, courses.size()); 
 		assertEquals(courses.get("CSE237").getName(), "Progamming Tools");
+	}
+	
+	@Test
+	void testAddStudentToCourse() {
+		Interface i = new Interface();
+		
+		i.addStudentHelper("John", "12345", 2024);
+		i.addStudentHelper("James", "490540", 2024);
+		
+		Student John = new Student("John", "12345", 2024);
+		Student James = new Student("James", "490540", 2024);
+		
+		i.addTeacherHelper("Pascal", "123", "CSE", "TA");
+
+		i.addCourseHelper("CSE237", "Progamming Tools", "123", 100);
+		i.addCourseHelper("CSE237", "Systems Software", "123", 200);
+		
+		i.addStudentToCourseHelper("CSE237", "12345");
+		i.addStudentToCourseHelper("CSE237", "490540");
+		
+		Map<String, Course> courses = i.getAllCourses();
+
+		assertEquals(courses.get("CSE237").getEnrollment(), 2);
+		ArrayList<Student> enrolled = courses.get("CSE237").getStudents();
+		assertTrue(enrolled.contains(John));
+		assertTrue(enrolled.contains(James));
+	}
+	
+	@Test
+	void testAddStudentToCourseCourseFull() {
+		Interface i = new Interface();
+		
+		i.addStudentHelper("John", "12345", 2024);
+		i.addStudentHelper("James", "490540", 2024);
+		
+		Student John = new Student("John", "12345", 2024);
+		Student James = new Student("James", "490540", 2024);
+		
+		i.addTeacherHelper("Pascal", "123", "CSE", "TA");
+
+		i.addCourseHelper("CSE237", "Progamming Tools", "123", 1);
+		
+		i.addStudentToCourseHelper("CSE237", "12345");
+		i.addStudentToCourseHelper("CSE237", "490540");
+		
+		Map<String, Course> courses = i.getAllCourses();
+
+		assertEquals(courses.get("CSE237").getEnrollment(), 1);
+		ArrayList<Student> enrolled = courses.get("CSE237").getStudents();
+		assertTrue(enrolled.contains(John));
+		assertFalse(enrolled.contains(James));
 	}
 	
 
