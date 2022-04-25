@@ -1,5 +1,6 @@
 package CourseMana;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.LinkedList;
@@ -47,6 +48,29 @@ public class Interface {
 		for (String command : listOfCommands) {
 			System.out.println("<" + command + ">");
 		}
+	}
+	
+	private void listStudentFromCourse() {
+		System.out.println("Hello From listStudentFromCourse()");
+		String courseID = askStringInput("Please Enter A Course ID: ");
+		ArrayList<Student> students = listStudentFromCourseHelper(courseID);
+		if (students != null) {
+			for(Student s : students) {
+				String id = s.getId();
+				String name = s.getName();
+				int year = s.getYear();
+				String message = "ID: "+ id + " Name: " + name + " Year: " + year;
+				System.out.println(message);
+			}
+		}
+	}
+	
+	public ArrayList<Student> listStudentFromCourseHelper(String courseID) {
+		if (!idToCourse.containsKey(courseID)) {
+			System.out.println("Invalid course ID.");
+			return null;
+		}
+		return this.idToCourse.get(courseID).getStudents();
 	}
 	
 	private void addStudentToCourse() {
@@ -207,6 +231,10 @@ public class Interface {
 		input = input.toLowerCase();
 		input = input.replaceAll("\\s+","");
 		switch(input) {
+		case "liststudentfromcourse":
+			System.out.println("Calling listStudentFromCourse()...");
+			listStudentFromCourse();
+			break;
 		case "addstudenttocourse":
 			System.out.println("Calling addStudentToCourse()...");
 			addStudentToCourse();
