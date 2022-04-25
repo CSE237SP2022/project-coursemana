@@ -1,5 +1,6 @@
 package CourseMana;
 
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
@@ -47,81 +48,99 @@ public class Interface {
 		}
 	}
 	
-	// add new course to the system
+	private void addStudentToCourse() {
+		System.out.println("Hello From addStudentToCourse()");
+		String courseID = askStringInput("Please Enter A Course ID: ");
+		String studentID = askStringInput("Please Enter A Student ID: ");
+        addStudentToCourseHelper(courseID, studentID);
+	}
+	
+	public void addStudentToCourseHelper(String courseID, String studentID) {
+		if (!idToCourse.containsKey(courseID)) {
+			System.out.println("Student NOT added to course. Invalid course ID.");
+		}
+		if (!idToStudent.containsKey(studentID)) {
+			System.out.println("Student NOT added to course. Invalid student ID.");
+        }
+		Course c = this.idToCourse.get(courseID);
+		Student s = this.idToStudent.get(studentID);
+		if (c.addStudent(s)) {
+			System.out.println("Student successfully added.");
+		} else {
+			System.out.println("Student NOT added.");
+		}
+	}
+	
 	private void addCourse() {
 		System.out.println("Hello From addCourse()");
-		
 		String courseID = askStringInput("Please Enter A Course ID: ");
-		while(idToCourse.containsKey(courseID)) {
-			courseID = askStringInput("ID <" + courseID+ "> is in used, please enter a new ID:");
-		}
-		
 		String courseName = askStringInput("Please Enter A Course Name: ");
-		
 		int courseSize = askPosIntInput("Please Enter The Size of the Course: ");
-		
-		String teacherId = askStringInput("Please Enter Teacher ID: ");
-		while(!(idToTeacher.containsKey(teacherId))) {
-			teacherId = askStringInput("Teacher ID is not in the system, please enter a valid ID.");
-		}
-		
+		String teacherId = askStringInput("Please Enter Teacher ID: ");	
 		addCourseHelper(courseID, courseName, teacherId, courseSize);
 		
 	}
 	
 	public void addCourseHelper(String courseID, String courseName, String teacherId, int courseSize) {
-		
-		if(idToTeacher.size()==0) {
-			System.out.println("Cannot add course since there is no teacher in the system.");
-		}
-		
 		if(idToCourse.containsKey(courseID)) {
 			System.out.println("Invalid course ID - already exists");
 		}
-		
+		if(idToTeacher.size()==0) {
+			System.out.println("Cannot add course since there is no teacher in the system.");
+		}
 		if(!idToTeacher.containsKey(teacherId)) {
 			System.out.println("Teacher id does not exist, please input a valid teacher id");
 		}
-		
 		Course newCourse = new Course(courseName, courseID, courseSize, idToTeacher.get(teacherId));
 		idToCourse.put(courseName, newCourse);
 		System.out.println("ID: "+ courseID + "Name: " + courseName + " of size " + courseSize + " is added.");
-		
-		
 	}
-
+	
     // add new student to the system
     private void addStudent() {
         System.out.println("Hello From addStudent()");
         String studentID = askStringInput("Please Enter A Student ID: ");
-        while (idToStudent.containsKey(studentID)) {
-            studentID = askStringInput("ID <" + studentID + "> is in used, please enter a new ID:");
-        }
         String studentName = askStringInput("Please Enter A Student Name: ");
         int year = askPosIntInput("Please Enter The Year of the Student: ");
-
-        Student newStudent = new Student(studentName, studentID, year);
-        idToStudent.put(studentID, newStudent);
-
-        System.out.println("ID: " + studentID + " Name: " + studentName + " of year " + year + " is added. ");
+        addStudentHelper(studentName, studentID, year);
     }
+    
+    public void addStudentHelper(String studentName, String studentID, int year) {
+	   if (idToStudent.containsKey(studentID)) {
+           System.out.println("Student NOT added. ID <" + studentID + "> is in use.");
+           return;
+       }
+	   Student newStudent = new Student(studentName, studentID, year);
+       idToStudent.put(studentID, newStudent);
+       System.out.println("ID: " + studentID + " Name: " + studentName + " of year " + year + " is added. ");
+   }
     
     //adds a new teacher into the system
     private void addTeacher() {
         System.out.println("Hello From addTeacher()");
         String teacherID = askStringInput("Please Enter A Teacher ID: ");
-        while (idToTeacher.containsKey(teacherID)) {
-        	teacherID = askStringInput("ID <" + teacherID + "> is in used, please enter a new ID:");
-        }
         String teacherName = askStringInput("Please Enter A Teacher Name: ");
         String teacherDepartment = askStringInput("Please Enter The Department of The Teacher: ");
         String teacherTitle = askStringInput("Please Enter The Title of The Teacher: ");
-
-        Teacher newTeacher = new Teacher(teacherName, teacherID, teacherDepartment, teacherTitle);
-        idToTeacher.put(teacherID, newTeacher);
-
-        System.out.println("ID: " + teacherID + " Name: " + teacherName + " of department " + teacherDepartment + "with the title " + teacherTitle + "is added. ");
+        addTeacherHelper(teacherName, teacherID, teacherDepartment, teacherTitle);
+        
     }
+    
+    // helper method that add teacher to the system
+    public void addTeacherHelper(String teacherName, String teacherID, String teacherDept, String teacherTitle) {
+    	if (idToTeacher.containsKey(teacherID)) {
+            System.out.println("Teacher NOT added. ID <" + teacherID + "> is in use.");
+            return;
+        }
+    	Teacher newTeacher = new Teacher(teacherName, teacherID, teacherDept, teacherTitle);
+        idToTeacher.put(teacherID, newTeacher);
+        System.out.println("ID: " + teacherID + " Name: " + teacherName + " of department " + teacherDept + "with the title " + teacherTitle + "is added. ");
+    }
+    
+    // get the map of teachers
+    public Map<String, Teacher> getAllTeachers() {
+		return this.idToTeacher;
+	}
     
 	// list all courses in the system
 	private void listCourse() {
@@ -161,6 +180,14 @@ public class Interface {
 		}
 	}
 	
+	public int getNumStudents() {
+		return this.idToStudent.size();
+	}
+	
+	public Map<String, Student> getAllStudents() {
+		return this.idToStudent;
+	}
+	
 	// list all students in the system
 	private void listStudent() {
 
@@ -183,6 +210,10 @@ public class Interface {
 	// handle different command
 	public void executeCommand(String input) {
 		switch(input) {
+		case "add student to course":
+			System.out.println("Calling addStudentToCourse()...");
+			addStudentToCourse();
+			break;
 		case "add student":
 			System.out.println("Calling addStudent()...");
 			addStudent();
@@ -226,9 +257,7 @@ public class Interface {
 		}
 		System.out.println();
 		String input = scanner.nextLine();
-		
 		executeCommand(input);
-		
 	}
 	
 	
@@ -236,9 +265,15 @@ public class Interface {
 	private int askPosIntInput(String prompt) {
 		Scanner scanner = new Scanner(System.in); 
 		System.out.println(prompt);
+		while (!scanner.hasNextInt()) {
+			System.out.println("Please enter an integer.");
+		}
 		int input = scanner.nextInt();
-		while(input<0) {
+		while(input<=0) {
 			System.out.println("Please enter a positive integer.");
+			while (!scanner.hasNextInt()) {
+				System.out.println("Please enter an integer.");
+			}
 			input = scanner.nextInt();
 		}
 		return input;
