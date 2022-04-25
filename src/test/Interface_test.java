@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 import java.util.Map;
 
 import org.junit.jupiter.api.BeforeEach;
@@ -203,6 +204,38 @@ class Interface_test {
 		ArrayList<Student> enrolled = courses.get("CSE237").getStudents();
 		assertTrue(enrolled.contains(John));
 		assertFalse(enrolled.contains(James));
+	}
+	
+	@Test
+	void testListStudentFromCourseHelper() {
+		Interface i = new Interface();
+		
+		i.addStudentHelper("John", "12345", 2024);
+		i.addStudentHelper("James", "490540", 2024);
+		
+		Student John = new Student("John", "12345", 2024);
+		Student James = new Student("James", "490540", 2024);
+		
+		i.addTeacherHelper("Pascal", "123", "CSE", "TA");
+
+		i.addCourseHelper("CSE237", "Progamming Tools", "123", 100);
+		i.addCourseHelper("CSE361", "Systems Software", "123", 200);
+		
+		i.addStudentToCourseHelper("CSE237", "12345");
+		i.addStudentToCourseHelper("CSE237", "490540");
+		
+		List<Student> students = i.listStudentFromCourseHelper("CSE237");
+
+		assertEquals(students.size(), 2);
+		assertTrue(students.contains(John));
+		assertTrue(students.contains(James));
+		
+		students = i.listStudentFromCourseHelper("CSE361");
+		
+		assertEquals(students.size(), 0);
+		assertFalse(students.contains(John));
+		assertFalse(students.contains(James));
+		
 	}
 	
 
