@@ -50,18 +50,43 @@ public class Interface {
 	// add new course to the system
 	private void addCourse() {
 		System.out.println("Hello From addCourse()");
+		
 		String courseID = askStringInput("Please Enter A Course ID: ");
 		while(idToCourse.containsKey(courseID)) {
 			courseID = askStringInput("ID <" + courseID+ "> is in used, please enter a new ID:");
 		}
+		
 		String courseName = askStringInput("Please Enter A Course Name: ");
+		
 		int courseSize = askPosIntInput("Please Enter The Size of the Course: ");
+		
 		String teacherId = askStringInput("Please Enter Teacher ID: ");
+		while(!(idToTeacher.containsKey(teacherId))) {
+			teacherId = askStringInput("Teacher ID is not in the system, please enter a valid ID.");
+		}
+		
+		addCourseHelper(courseID, courseName, teacherId, courseSize);
+		
+	}
+	
+	public void addCourseHelper(String courseID, String courseName, String teacherId, int courseSize) {
+		
+		if(idToTeacher.size()==0) {
+			System.out.println("Cannot add course since there is no teacher in the system.");
+		}
+		
+		if(idToCourse.containsKey(courseID)) {
+			System.out.println("Invalid course ID - already exists");
+		}
+		
+		if(!idToTeacher.containsKey(teacherId)) {
+			System.out.println("Teacher id does not exist, please input a valid teacher id");
+		}
 		
 		Course newCourse = new Course(courseName, courseID, courseSize, idToTeacher.get(teacherId));
 		idToCourse.put(courseName, newCourse);
+		System.out.println("ID: "+ courseID + "Name: " + courseName + " of size " + courseSize + " is added.");
 		
-		System.out.println("ID: "+ courseID + "Name: " + courseName + " of size " + courseSize + " is added. ");
 		
 	}
 
