@@ -71,43 +71,13 @@ public class Interface {
 		}
 	}
 	
-<<<<<<< HEAD
-	// add new course to the system
-=======
->>>>>>> seperate_add_course
+
+
 	private void addCourse() {
-		System.out.println("Hello From addCourse()");
-		
-		if(idToTeacher.size()==0) {
-			System.out.println("Cannot add course since there is no teacher in the system.");
-			return;
-		}
-		
+		System.out.println("Hello From addCourse()");		
 		String courseID = askStringInput("Please Enter A Course ID: ");
-<<<<<<< HEAD
-		while(idToCourse.containsKey(courseID)) {
-			courseID = askStringInput("ID <" + courseID+ "> is in used, please enter a new ID:");
-		}
-		
-=======
->>>>>>> seperate_add_course
 		String courseName = askStringInput("Please Enter A Course Name: ");
-		
 		int courseSize = askPosIntInput("Please Enter The Size of the Course: ");
-<<<<<<< HEAD
-		
-		String teacherId = askStringInput("Please Enter Teacher ID: ");
-		while(!(idToTeacher.containsKey(teacherId))) {
-			teacherId = askStringInput("Teacher ID is not in the system, please enter a valid ID.");
-		}
-		
-		Course newCourse = new Course(courseName, courseID, courseSize, idToTeacher.get(teacherId));
-		idToCourse.put(courseName, newCourse);
-		System.out.println("ID: "+ courseID + "Name: " + courseName + " of size " + courseSize + " is added. ");
-		
-	}
-	
-=======
 		String teacherId = askStringInput("Please Enter Teacher ID: ");	
 		addCourseHelper(courseID, courseName, teacherId, courseSize);
 		
@@ -128,27 +98,18 @@ public class Interface {
 		System.out.println("ID: "+ courseID + "Name: " + courseName + " of size " + courseSize + " is added.");
 	}
 	
->>>>>>> seperate_add_course
+
     // add new student to the system
     private void addStudent() {
         System.out.println("Hello From addStudent()");
         String studentID = askStringInput("Please Enter A Student ID: ");
-<<<<<<< HEAD
-        while (idToStudent.containsKey(studentID)) {
-        	studentID = askStringInput("ID <" + studentID + "> is in used, please enter a new ID:");
-        }
-=======
->>>>>>> seperate_add_course
         String studentName = askStringInput("Please Enter A Student Name: ");
         int year = askPosIntInput("Please Enter The Year of the Student: ");
         addStudentHelper(studentName, studentID, year);
     }
     
-<<<<<<< HEAD
-   public void addStudentHelper(String studentName, String studentID, int year) {
-=======
+
     public void addStudentHelper(String studentName, String studentID, int year) {
->>>>>>> seperate_add_course
 	   if (idToStudent.containsKey(studentID)) {
            System.out.println("Student NOT added. ID <" + studentID + "> is in use.");
            return;
@@ -165,10 +126,6 @@ public class Interface {
         String teacherName = askStringInput("Please Enter A Teacher Name: ");
         String teacherDepartment = askStringInput("Please Enter The Department of The Teacher: ");
         String teacherTitle = askStringInput("Please Enter The Title of The Teacher: ");
-<<<<<<< HEAD
-        
-=======
->>>>>>> seperate_add_course
         addTeacherHelper(teacherName, teacherID, teacherDepartment, teacherTitle);
         
     }
