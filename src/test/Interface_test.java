@@ -8,6 +8,7 @@ import java.util.Map;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import CourseMana.Course;
 import CourseMana.Interface;
 import CourseMana.Student;
 import CourseMana.Teacher;
@@ -92,5 +93,65 @@ class Interface_test {
 		
 		
 	}
+	
+	@Test
+	void testAddCourseHelper() {
+		Interface i = new Interface();
+		
+		i.addTeacherHelper("Pascal", "123", "CSE", "TA");
+		i.addTeacherHelper("James", "490540", "MATH", "Prof");
+		
+		i.addCourseHelper("CSE237", "Progamming Tools", "123", 100);
+		i.addCourseHelper("CSE361", "Systems Software", "123", 200);
+		
+		Map<String, Course> courses = i.getAllCourses();
+		
+		assertEquals(2, courses.size()); 
+		assertEquals("Progamming Tools", courses.get("CSE237").getName()); 
+		assertEquals("Systems Software", courses.get("CSE361").getName()); 
+		
+	}
+	
+	@Test
+	void testAddCourseHelperNoTeacher() {
+		Interface i = new Interface();
+
+		i.addCourseHelper("CSE237", "Progamming Tools", "123", 100);
+		i.addCourseHelper("CSE361", "Systems Software", "123", 200);
+		
+		Map<String, Course> courses = i.getAllCourses();
+		
+		assertEquals(0, courses.size()); 
+	}
+	
+	@Test
+	void testAddCourseHelperTeachDoesnotExist() {
+		Interface i = new Interface();
+		
+		i.addTeacherHelper("James", "490540", "MATH", "Prof");
+
+		i.addCourseHelper("CSE237", "Progamming Tools", "123", 100);
+		i.addCourseHelper("CSE361", "Systems Software", "123", 200);
+		
+		Map<String, Course> courses = i.getAllCourses();
+		
+		assertEquals(0, courses.size()); 
+	}
+	
+	@Test
+	void testAddCourseHelperDuplicateID() {
+		Interface i = new Interface();
+		
+		i.addTeacherHelper("Pascal", "123", "CSE", "TA");
+
+		i.addCourseHelper("CSE237", "Progamming Tools", "123", 100);
+		i.addCourseHelper("CSE237", "Systems Software", "123", 200);
+		
+		Map<String, Course> courses = i.getAllCourses();
+		
+		assertEquals(1, courses.size()); 
+		assertEquals(courses.get("CSE237").getName(), "Progamming Tools");
+	}
+	
 
 }
