@@ -204,32 +204,34 @@ public class Interface {
 	
 	// handle different command
 	public void executeCommand(String input) {
+		input = input.toLowerCase();
+		input = input.replaceAll("\\s+","");
 		switch(input) {
-		case "add student to course":
+		case "addstudenttocourse":
 			System.out.println("Calling addStudentToCourse()...");
 			addStudentToCourse();
 			break;
-		case "add student":
+		case "addstudent":
 			System.out.println("Calling addStudent()...");
 			addStudent();
 			break;
-		case "add teacher":
+		case "addteacher":
 			System.out.println("Calling addTeacher()...");
 			addTeacher();
 			break;
-		case "list teacher":
+		case "listteacher":
 			System.out.println("Calling listTeacher()...");
 			listTeacher();
 			break;
-		case "add course":
+		case "addcourse":
 			System.out.println("Calling addCourse()...");
 			addCourse();
 			break;
-		case "list course":
+		case "listcourse":
 			System.out.println("Calling listCourse()...");
 			listCourse();
 			break;
-		case "list student":
+		case "liststudent":
 			System.out.println("Calling listCourse()...");
 			listStudent();
 			break;
