@@ -7,23 +7,23 @@
 
 In this iteration, our group focused on making the previous funcionality more robust.
 
-**Handling Input Type Error**
+***Handling Input Type Error***
 
 The interface now can handle the error caused by wrong user input type. The program will now repeatedly ask the user for a positive integer instead of throwing an error.
 
-**New Functionality: add student to course**
+***New Functionality: add student to course***
 
 The interface can now handle adding student to course commands.
 
-**New Functionality: list students from a course**
+***New Functionality: list students from a course***
 
 The interface can now list students from a particular course.
 
-**New Functinality: uppercase commands**
+***New Functinality: uppercase commands***
 
 The interface now also supports uppercase commands. E.g. both "add course" and "ADD course" will work.
 
-**Extracted Helper Methods**
+***Extracted Helper Methods***
 
 We extracted several helper methods from the methods in Interface class to make the implementation cleaner. We also were able to develop test cases for these helper method since they do not depend on user input anymore. 
 
