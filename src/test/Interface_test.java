@@ -21,8 +21,8 @@ class Interface_test {
 	void testAddStudentOne() {
 		Interface i = new Interface();
 		assertEquals(i.getNumStudents(), 0);
-		i.addStudentHelper("12345", "John", 2024);
-		i.addStudentHelper("490540", "James", 2024);
+		i.addStudentHelper("John", "12345", 2024);
+		i.addStudentHelper("James", "490540", 2024);
 		assertEquals(i.getNumStudents(), 2);
 	}
 	
