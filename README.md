@@ -14,7 +14,7 @@ The interface can now handle adding student to course command.
 
 ***New Functionality: list students from a course***
 
-The interface can now list students from a particular course.
+The interface can now list students from a particular course. This is done by the "course detail" command.
 
 ***New Functinality: uppercase commands***
 
