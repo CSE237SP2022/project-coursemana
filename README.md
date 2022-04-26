@@ -1,11 +1,8 @@
 # project-coursemana
 
-
-
-
 ## User stories
 
-In this iteration, our group focused on making the previous functionalities more robust while also adding new minor functionalities. We improved code cleanliness by separating out helper methods from several methods in the Interface class. We also improved the testing of our project. 
+In this iteration, our group focused on making the previous functionalities more robust while also adding new minor functionalities. We improved code cleanliness by separating codes that ask for user inputs and those that perform data operations into different functions (see modification on addTeacher() for example). Such modification enable us to write unit tests for the data operation.
 
 ***Handling Input Type Error***
 
