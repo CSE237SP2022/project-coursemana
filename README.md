@@ -2,7 +2,7 @@
 
 ## User stories
 
-In this iteration, our group focused on making the previous functionalities more robust (error handling) while also adding new minor functionalities. We improved code cleanliness by separating codes that ask for user inputs and those that perform data operations into different functions (see modification on addTeacher() for example). Such modification enable us to write unit tests for the data operation.
+In this iteration, our group focused on making the previous functionalities more robust (error handling) while also adding new minor functionalities. We improved code cleanliness by separating codes that ask for user inputs and those that perform data operations into different functions (see modification on addTeacher() for example). Such modification also enables us to write unit tests for the data operation.
 
 ***Handling Input Type Error***
 
@@ -19,10 +19,6 @@ The interface can now list students from a particular course.
 ***New Functinality: uppercase commands***
 
 The interface now also supports uppercase commands. E.g. "add course", "ADD course" and "add     course" will all work.
-
-***Extracted Helper Methods***
-
-We extracted several helper methods from the methods in Interface class to make the implementation cleaner. 
 
 ***Test Cases for Extracted Helper Methods***
 
