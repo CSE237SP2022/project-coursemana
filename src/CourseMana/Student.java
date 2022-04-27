@@ -34,10 +34,13 @@ public class Student {
 		return this.year;
 	}
 
-	public void setYear(int newYear) {
-		this.year = newYear;
-		
-	}
+    public void setYear(int newYear) {
+        if (newYear > 0) {
+            this.year = newYear;
+        } else {
+            System.out.println("Year should be positive");
+        }
+    }
 	
     @Override
     public boolean equals(Object obj) {
