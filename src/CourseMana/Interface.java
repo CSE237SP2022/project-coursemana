@@ -285,30 +285,22 @@ public class Interface {
 		executeCommand(input);
 	}
 	
-	private boolean convertStringToInt(String s) {
-		try {
-			if (Integer.parseInt(s) >= 0) {
-				return true;
-			} 
-			return false;
-		}
-		catch (NumberFormatException e) {
-		   return false;
-		}
-	}
-	
-	
 	//ask for positive integer input from the user
 	private int askPosIntInput(String prompt) {
-		Scanner scanner = new Scanner(System.in); 
-		System.out.println(prompt);
-		String input = scanner.nextLine();
-		while (!convertStringToInt(input)) {
-			System.out.println("Please enter a positive integer:");
-			Scanner newScanner = new Scanner(System.in); 
-			input = scanner.nextLine();
-		}
-		return Integer.parseInt(input);
+		Scanner scanner = new Scanner(System.in);
+        System.out.println(prompt);
+        while (true) {
+            try {
+                String input = scanner.nextLine();
+                int num = Integer.parseInt(input);
+                if (num >= 0) {
+                    return num;
+                }
+                System.out.println("Please enter a positive integer: ");
+            } catch (NumberFormatException e) {
+                System.out.println("Wrong number format!");
+            }
+        }
 	}
 	
 	// ask for string input from the user
