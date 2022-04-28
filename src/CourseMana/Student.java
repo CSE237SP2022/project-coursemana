@@ -39,21 +39,21 @@ public class Student {
 		
 	}
 	
-	public boolean equals(Object o) {
-		Student other = (Student) o;
-		if (other.getName().equals(this.getName())) {
-			if (other.getId().equals(this.getId())) {
-				if (other.getYear() == this.getYear()) {
-					return true;
-				} else {
-					return false;
-				}
-			} else {
-				return false;
-			}
-		} else {
-			return false;
-		}
-	}
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        Student other = (Student) obj;
+        return this.name.equals(other.name)
+            && this.studentId.equals(other.studentId)
+            && this.year == other.year;
+    }
 
 }
