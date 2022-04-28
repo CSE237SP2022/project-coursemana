@@ -43,5 +43,13 @@ public class Student_test {
 		assertEquals(2024, demoStudent.getYear());
 		
 	}
-
+    @Test
+    public void testEquals() {
+        Student st1 = new Student("Jack", "427689", 2025);
+        Student st2 = new Student("Jack", "427689", 2025);
+        assertFalse(st1.equals(null));
+        assertFalse(st1.equals("Jack"));
+        assertTrue(st1.equals(st1));
+        assertTrue(st1.equals(st2));
+    }
 }
